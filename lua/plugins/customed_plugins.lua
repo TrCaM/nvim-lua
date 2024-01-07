@@ -1,4 +1,5 @@
 return {
+  -- Search for available keymaps.
   {
     "tris203/hawtkeys.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
