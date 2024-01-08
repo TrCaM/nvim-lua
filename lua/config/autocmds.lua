@@ -16,6 +16,19 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- wrap and check for spell in text filetypes
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("python_leetcode"),
+  pattern = { "python" },
+  callback = function()
+    vim.opt_local.textwidth = 80
+    vim.diagnostic.config({ underline = false, virtual_text = false, signs = false }, 47)
+    vim.diagnostic.config({ underline = false, virtual_text = false, signs = false }, 48)
+  end,
+})
+
+-- Temporary disable python diagnostic for leetcode
+
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("color_column_100"),
   pattern = { "lua" },
