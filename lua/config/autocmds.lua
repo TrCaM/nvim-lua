@@ -22,8 +22,9 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = { "python" },
   callback = function()
     vim.opt_local.textwidth = 80
-    vim.diagnostic.config({ underline = false, virtual_text = false, signs = false }, 47)
-    vim.diagnostic.config({ underline = false, virtual_text = false, signs = false }, 48)
+    -- vim.diagnostic.config({ underline = false, virtual_text = false, signs = false }, 47)
+    -- vim.diagnostic.config({ underline = false, virtual_text = false, signs = false }, 48)
+    vim.diagnostic.disable()
   end,
 })
 
@@ -33,7 +34,7 @@ vim.api.nvim_create_autocmd("FileType", {
   group = augroup("color_column_100"),
   pattern = { "lua" },
   callback = function()
-    vim.opt_local.textwidth = "100"
-    vim.opt_local.colorcolumn = 100
+    vim.opt_local.textwidth = 100
+    vim.opt_local.colorcolumn = "100"
   end,
 })
