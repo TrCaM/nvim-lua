@@ -61,4 +61,7 @@ return {
       })
     end,
   },
+
+  -- disable trouble
+  { "nvim-notify", enabled = false },
 }
