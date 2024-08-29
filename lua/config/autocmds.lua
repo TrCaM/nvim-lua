@@ -2,8 +2,6 @@
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
 
-local cmp = require("cmp")
-
 local function augroup(name)
   return vim.api.nvim_create_augroup("customed_" .. name, { clear = true })
 end
@@ -18,7 +16,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- wrap and check for spell in text filetypes
+-- Temporary disable python diagnostic for leetcode
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("python_leetcode"),
   pattern = { "python" },
@@ -30,8 +28,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- Temporary disable python diagnostic for leetcode
-
+-- Create a ruler at column 100
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("color_column_100"),
   pattern = { "lua" },
@@ -40,26 +37,3 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.colorcolumn = "100"
   end,
 })
-
-function SetAutoCmp(mode)
-  if mode then
-    cmp.setup({
-      completion = {
-        autocomplete = { require("cmp.types").cmp.TriggerEvent.TextChanged },
-      },
-    })
-  else
-    cmp.setup({
-      completion = {
-        autocomplete = false,
-      },
-    })
-  end
-end
-SetAutoCmp(false)
-
--- enable automatic completion popup on typing
-vim.cmd("command AutoCmpOn lua SetAutoCmp(true)")
-
--- disable automatic competion popup on typing
-vim.cmd("command AutoCmpOff lua SetAutoCmp(false)")
