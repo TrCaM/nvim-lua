@@ -19,6 +19,13 @@ vim.api.nvim_set_keymap("n", "[<space>", "<cmd>m .-2<cr>==", { desc = "Move up" 
 vim.api.nvim_set_keymap("n", "]<space>", "<cmd>m .+1<cr>==", { desc = "Move down" })
 vim.api.nvim_set_keymap("v", "[<space>", "<cmd>m .-2<cr>==", { desc = "Move up" })
 vim.api.nvim_set_keymap("v", "]<space>", "<cmd>m .+1<cr>==", { desc = "Move down" })
+
+local is_leetcode_loaded, _ = pcall(vim.cmd, "Leet")
+if is_leetcode_loaded then
+  vim.api.nvim_set_keymap("n", "<leader>lr", "<cmd>Leet run<CR>", { desc = "Leetcode - Run test cases" })
+  vim.api.nvim_set_keymap("n", "<leader>ls", "<cmd>Leet submit<CR>", { desc = "Leetcode - Submit answer" })
+  vim.api.nvim_set_keymap("n", "<leader>ld", "<cmd>Leet desc<CR>", { desc = "Leetcode - Show description" })
+end
 ------------------------------
 
 -- New command to Set AutoCompletion on and off -
