@@ -52,7 +52,8 @@ vim.api.nvim_set_keymap("n", "<leader>A", "<cmd>AutoCmpOff<cr>", { noremap = tru
 ------------------------------
 
 -- Leetcode plugin key bindings
-require("which-key").add({
+local wk = require("which-key")
+wk.add({
   { "<localleader>l", group = "Leetcode" },
   {
     mode = { "n", "v" },

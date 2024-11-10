@@ -1,15 +1,4 @@
 return {
-  -- Search for available keymaps.
-  {
-    "tris203/hawtkeys.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = {
-      -- an empty table will work for default config
-      --- if you use functions, or whichky, or lazy to map keys
-      --- then please see the API below for options
-    },
-  },
-
   -- Use <tab> for completion and snippets (supertab)
   -- first: disable default <tab> and <s-tab> behavior in LuaSnip
   {
@@ -97,7 +86,8 @@ return {
     event = "VeryLazy",
     config = function()
       require("chatgpt").setup()
-      require("which-key").add({
+      local wk = require("which-key")
+      wk.add({
         { "<leader>z", group = "ChatGPT" },
         { "<leader>zc", "<cmd>ChatGPT<CR>", desc = "ChatGPT" },
         {
