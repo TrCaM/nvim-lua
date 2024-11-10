@@ -92,4 +92,36 @@ return {
       })
     end,
   },
+  {
+    "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("chatgpt").setup()
+      require("which-key").add({
+        { "<leader>z", group = "ChatGPT" },
+        { "<leader>zc", "<cmd>ChatGPT<CR>", desc = "ChatGPT" },
+        {
+          mode = { "n", "v" },
+          { "<leader>za", "<cmd>ChatGPTRun add_tests<CR>", desc = "Add Tests" },
+          { "<leader>zd", "<cmd>ChatGPTRun docstring<CR>", desc = "Docstring" },
+          { "<leader>ze", "<cmd>ChatGPTEditWithInstruction<CR>", desc = "Edit with instruction" },
+          { "<leader>zf", "<cmd>ChatGPTRun fix_bugs<CR>", desc = "Fix Bugs" },
+          { "<leader>zg", "<cmd>ChatGPTRun grammar_correction<CR>", desc = "Grammar Correction" },
+          { "<leader>zk", "<cmd>ChatGPTRun keywords<CR>", desc = "Keywords" },
+          { "<leader>zl", "<cmd>ChatGPTRun code_readability_analysis<CR>", desc = "Code Readability Analysis" },
+          { "<leader>zo", "<cmd>ChatGPTRun optimize_code<CR>", desc = "Optimize Code" },
+          { "<leader>zr", "<cmd>ChatGPTRun roxygen_edit<CR>", desc = "Roxygen Edit" },
+          { "<leader>zs", "<cmd>ChatGPTRun summarize<CR>", desc = "Summarize" },
+          { "<leader>zt", "<cmd>ChatGPTRun translate<CR>", desc = "Translate" },
+          { "<leader>zx", "<cmd>ChatGPTRun explain_code<CR>", desc = "Explain Code" },
+        },
+      })
+    end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "folke/trouble.nvim", -- optional
+      "nvim-telescope/telescope.nvim",
+    },
+  },
 }
