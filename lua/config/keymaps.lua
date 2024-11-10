@@ -19,13 +19,6 @@ vim.api.nvim_set_keymap("n", "[<space>", "<cmd>m .-2<cr>==", { desc = "Move up" 
 vim.api.nvim_set_keymap("n", "]<space>", "<cmd>m .+1<cr>==", { desc = "Move down" })
 vim.api.nvim_set_keymap("v", "[<space>", "<cmd>m .-2<cr>==", { desc = "Move up" })
 vim.api.nvim_set_keymap("v", "]<space>", "<cmd>m .+1<cr>==", { desc = "Move down" })
-
-local is_leetcode_loaded, _ = pcall(vim.cmd, "Leet")
-if is_leetcode_loaded then
-  vim.api.nvim_set_keymap("n", "<leader>lr", "<cmd>Leet run<CR>", { desc = "Leetcode - Run test cases" })
-  vim.api.nvim_set_keymap("n", "<leader>ls", "<cmd>Leet submit<CR>", { desc = "Leetcode - Submit answer" })
-  vim.api.nvim_set_keymap("n", "<leader>ld", "<cmd>Leet desc<CR>", { desc = "Leetcode - Show description" })
-end
 ------------------------------
 
 -- New command to Set AutoCompletion on and off -
@@ -57,3 +50,14 @@ vim.cmd("command AutoCmpOff lua SetAutoCmp(false)")
 vim.api.nvim_set_keymap("n", "<leader>a", "<cmd>AutoCmpOn<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>A", "<cmd>AutoCmpOff<cr>", { noremap = true, silent = true })
 ------------------------------
+
+-- Leetcode plugin key bindings
+require("which-key").add({
+  { "<localleader>l", group = "Leetcode" },
+  {
+    mode = { "n", "v" },
+    { "<localleader>lr", "<cmd>Leet run<CR>", desc = "Leetcode - Run test cases" },
+    { "<localleader>ls", "<cmd>Leet submit<CR>", desc = "Leetcode - Submit answer" },
+    { "<localleader>ld", "<cmd>Leet desc<CR>", desc = "Leetcode - Show description" },
+  },
+})
